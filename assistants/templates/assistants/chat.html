@@ -1,0 +1,13 @@
+<h2>Chat with {{ customer.name }}</h2>
+
+<div>
+    {% for message in messages %}
+        <p><strong>{% if message.is_user %}You:{% else %}Assistant:{% endif %}</strong> {{ message.content }}</p>
+    {% endfor %}
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+</form>
